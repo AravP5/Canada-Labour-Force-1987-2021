@@ -50,3 +50,5 @@ This is a practice project where I analyse the datasets using MSSQL and R to ide
 Using MSSQL in Azure Data Studio (ADS), the labour_force_characteristics were specified to be 'Unemployment Rate' and this was done for all occupations and both sexes per year. The resulting rows returned were then plugged into SandDance, a downloadable extension in ADS to see if any basic trends could be identified. To get a clearer look at the data, the unemployment subtable was exported as a CSV and coded in RStudio as a scatter plot.
 
 
+<img src="Unemployment Rate Plot" alt="Unemployment Rate Plot" width="800"/>
+
