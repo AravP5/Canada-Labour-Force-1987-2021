@@ -51,3 +51,4 @@ Using MSSQL in Azure Data Studio (ADS), the labour_force_characteristics were sp
 
   <img src="Unemployment Rate Plot" alt="Unemployment Rate Plot" width="800"/>
 
+Canada in general has higher unemployment than its counterparts in the United States and Europe due to its high proportion of seasonal and coastal industries. Another reason as to why this is the case is due to the many insulated and isolated communities in Canada which makes it more difficult for job hirings and applicants to match up.
