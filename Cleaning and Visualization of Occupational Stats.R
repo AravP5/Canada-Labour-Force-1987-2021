@@ -25,18 +25,24 @@ view(both_sexes_subset) #Both sexes, 1987-2021 labour force for all sectors
 both_sexes_subset_major_22 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Technical occupations related to natural and applied sciences [22]',]
 both_sexes_subset_major_0 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Management occupations [0]',]
 both_sexes_subset_major_1 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Business, finance and administration occupations [1]',]
-
-view(subset(both_sexes_subset_major_0, GEO == 'Canada'))
+both_sexes_subset_major_2 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Natural and applied sciences and related occupations [2]',]
+view(subset(both_sexes_subset_major_2, GEO == 'Canada'))
 
 ggplot() +
+  scale_y_discrete(name = 'No. of Jobs', breaks = seq(0, 1000000, by = 600)) +
   geom_line(subset(both_sexes_subset_major_0, GEO == "Canada"), 
-            mapping = aes(REF_DATE, VALUE, group = GEO, colour = "red")) +
+            mapping = aes(REF_DATE, VALUE, group = GEO)) +
   geom_line(subset(both_sexes_subset_major_1, GEO == "Canada"), 
-            mapping = aes(REF_DATE, VALUE, group = GEO, colour = "orange")) +
+            mapping = aes(REF_DATE, VALUE, group = GEO)) +
   geom_line(subset(both_sexes_subset_major_22, GEO == "Canada"), 
-            mapping = aes(REF_DATE, VALUE, group = GEO, colour = "yellow")) +
-  theme_bw()
+            mapping = aes(REF_DATE, VALUE, group = GEO)) +
+  geom_line(subset(both_sexes_subset_major_2, GEO == "Canada"), 
+            mapping = aes(REF_DATE, VALUE, group = GEO)) +
+  theme_bw() +
+  facet_grid()
+  
 
-
-
-
+ggplot(subset(both_sexes_subset_major_2, GEO == "Canada"), 
+       aes(REF_DATE, VALUE, group = GEO)) +
+  geom_line() +
+  scale_y_discrete()
