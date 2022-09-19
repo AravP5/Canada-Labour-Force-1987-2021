@@ -52,3 +52,28 @@ Using MSSQL in Azure Data Studio (ADS), the labour_force_characteristics were sp
   <img src="Unemployment Rate Plot" alt="Unemployment Rate Plot" width="800"/>
 
 Canada in general has higher unemployment than its counterparts in the United States and Europe due to its high proportion of seasonal and coastal industries. Another reason as to why this is the case is due to the many insulated and isolated communities in Canada which makes it more difficult for job hirings and applicants to match up. There are many interesting points in the graph which can be discussed though. Due to the inflation high point in the early 1990s, the monetary and fiscal policies implemented by the Canadian government exacerbated this issue. The worlwide recession in 2008 is also reflected in Canada's unemployment rate, as it can be seen spiking up during that period. Lastly, the COVID-19 pandemic forced many business to close, raising unemployment to the highest since the 1990s. On the bright side, after a year of COVID-19, the economy seems to be recovering as more people are able to find jobs.
+
+
+### Investigating job growth in certain occupational sectors
+
+The data was imported and read into a data frame called `occupational_labour_force`. 
+
+`read.csv(
+  '/Users/aravpradhan/Downloads/14100335-eng (1)/Occupational Labour Force cleaned .csv')
+View(occupational_labour_force)`
+
+However, as seen from the table presented above, there were many columns of data present which had no use in the analysis. These columns could have been removed/dropped in ADS with MSSQL code with `DROP COLUMN`, but that was not done. Nevertheless, it is not difficult to drop columns in R, and using the `select()` function, the data was cleaned/trimmed down to only have 5 important columns of data for each entry. (This was actually done in multiple steps, with each subset reducing the amount of unneeded info/entries). The final data frame used for specific analysis was the `both_sexes_subset` which was used to create data frames for each NOC occupational sector.
+
+`both_sexes_subset_major_22 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Technical occupations related to natural and applied sciences [22]',]
+both_sexes_subset_major_0 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Management occupations [0]',]
+both_sexes_subset_major_1 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Business, finance and administration occupations [1]',]
+both_sexes_subset_major_2 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Natural and applied sciences and related occupations [2]',]`
+
+
+The `subset()` function had to be used to plot each `both_sexes_subset
+
+<img src="Job trends for specific sectors, 1987 - 2021, Canada" alt="Job trends for specific sectors, 1987 - 2021, Canada" width="800"/> 
+
+
+
+
