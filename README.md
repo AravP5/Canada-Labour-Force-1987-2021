@@ -2,7 +2,7 @@
 
 Data taken from [Statistics Canada](statcan.gc.ca)
 
-#Columns
+# Columns
 
 * REF_DATE - Year the record is taken. This dataset stretches from 1987 to 2021
 
@@ -64,10 +64,13 @@ View(occupational_labour_force)`
 
 However, as seen from the table presented above, there were many columns of data present which had no use in the analysis. These columns could have been removed/dropped in ADS with MSSQL code with `DROP COLUMN`, but that was not done. Nevertheless, it is not difficult to drop columns in R, and using the `select()` function, the data was cleaned/trimmed down to only have 5 important columns of data for each entry. (This was actually done in multiple steps, with each subset reducing the amount of unneeded info/entries). The final data frame used for specific analysis was the `both_sexes_subset` which was used to create data frames for each NOC occupational sector.
 
-`both_sexes_subset_major_22 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Technical occupations related to natural and applied sciences [22]',]
-both_sexes_subset_major_0 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Management occupations [0]',]
-both_sexes_subset_major_1 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Business, finance and administration occupations [1]',]
-both_sexes_subset_major_2 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Natural and applied sciences and related occupations [2]',]`
+`both_sexes_subset_major_22 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Technical occupations related to natural and applied sciences [22]',]`
+
+`both_sexes_subset_major_0 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Management occupations [0]',]`
+
+`both_sexes_subset_major_1 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Business, finance and administration occupations [1]',]`
+
+`both_sexes_subset_major_2 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Natural and applied sciences and related occupations [2]',]`
 
 
 The `subset()` function had to be used to plot each `both_sexes_subset
