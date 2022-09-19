@@ -73,7 +73,7 @@ However, as seen from the table presented above, there were many columns of data
 `both_sexes_subset_major_2 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Natural and applied sciences and related occupations [2]',]`
 
 
-The `subset()` function had to be used to plot each `both_sexes_subset
+The `subset()` function had to be used to plot each `both_sexes_subset' line on the ggplot graph, to filter and use only the rows where 'both_sexes_subset$GEO == "Canada"`. Also, each separate `geom_line()` layer of the graph was coloured to match its NOC Classification.
 
 <img src="Job trends for specific sectors, 1987 - 2021, Canada" alt="Job trends for specific sectors, 1987 - 2021, Canada" width="800"/> 
 
