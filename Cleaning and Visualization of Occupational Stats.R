@@ -26,10 +26,10 @@ both_sexes_subset_major_22 <- both_sexes_subset[both_sexes_subset$National_Occup
 both_sexes_subset_major_0 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Management occupations [0]',]
 both_sexes_subset_major_1 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Business, finance and administration occupations [1]',]
 both_sexes_subset_major_2 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Natural and applied sciences and related occupations [2]',]
-view(subset(both_sexes_subset_major_2, GEO == 'Canada'))
+view(subset(both_sexes_subset_major_0, GEO == 'Canada'))
 
-ggplot() +
-  scale_y_discrete(name = 'No. of Jobs', breaks = seq(0, 1000000, by = 600)) +
+ggplot(data = NULL, aes(colour = National_Occupational_Classification_NOC)) +
+  scale_y_continuous(name = 'No. of Jobs', breaks = seq(0, 1000000, by = 600)) +
   geom_line(subset(both_sexes_subset_major_0, GEO == "Canada"), 
             mapping = aes(REF_DATE, VALUE, group = GEO)) +
   geom_line(subset(both_sexes_subset_major_1, GEO == "Canada"), 
@@ -42,7 +42,43 @@ ggplot() +
   facet_grid()
   
 
-ggplot(subset(both_sexes_subset_major_2, GEO == "Canada"), 
-       aes(REF_DATE, VALUE, group = GEO)) +
-  geom_line() +
-  scale_y_discrete()
+both_sexes_subset$VALUE = as.numeric(both_sexes_subset[,5])
+is.numeric(both_sexes_subset_major_22$VALUE)
+both_sexes_subset_canada <- subset(both_sexes_subset, GEO == "Canada")
+view(both_sexes_subset_canada)
+
+both_sexes_subset_canada %>%
+  ggplot(aes(REF_DATE, VALUE, group = National_Occupational_Classification_NOC)) +
+  geom_line() # Way too many different plots, will have to pick and choose occupations for analysis
+
+
+view(cleaned_occupational_stats)
+geo_canada_both_sexes <- cleaned_occupational_stats[cleaned_occupational_stats$GEO == 'Canada', ]
+view(geo_canada_both_sexes)
+both_sexes_subset_major_22 <- both_sexes_subset[both_sexes_subset$National_Occupational_Classification_NOC %in% 'Technical occupations related to natural and applied sciences [22]',]
+
+ggplot(subset(geo_canada_both_sexes, Sex == 'Both sexes'), 
+       aes(REF_DATE, VALUE, group = National_Occupational_Classification_NOC)) +
+  geom_line()
+
+ 
+both_sexes_subset_major_0$VALUE = as.numeric(both_sexes_subset_major_0$VALUE)
+both_sexes_subset_major_1$VALUE = as.numeric(both_sexes_subset_major_1$VALUE)
+both_sexes_subset_major_2$VALUE = as.numeric(both_sexes_subset_major_2$VALUE)
+both_sexes_subset_major_22$VALUE = as.numeric(both_sexes_subset_major_22$VALUE)
+
+ggplot(data = NULL, aes(group = data, colour = National_Occupational_Classification_NOC)) +
+  geom_line(subset(both_sexes_subset_major_0, GEO == "Canada"), 
+            mapping = aes(REF_DATE, VALUE, group = GEO,)) +
+  ggtitle("Job Trends from 1987 - 2021", subtitle = "Data for All of Canada, certain occupational sectors selected") +
+  xlab("Year") +
+  ylab("No. of Jobs") +
+  xlim(1987, 2021) +
+  geom_line(subset(both_sexes_subset_major_1, GEO == "Canada"), 
+            mapping = aes(REF_DATE, VALUE, group = GEO)) +
+  geom_line(subset(both_sexes_subset_major_2, GEO == "Canada"), 
+            mapping = aes(REF_DATE, VALUE, group = GEO)) +
+  geom_line(subset(both_sexes_subset_major_22, GEO == "Canada"), 
+            mapping = aes(REF_DATE, VALUE, group = GEO)) +
+  scale_y_continuous(limits = c(200000, 4000000), name = "No. of Jobs in sector")
+  
