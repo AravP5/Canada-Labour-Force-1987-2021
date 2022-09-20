@@ -77,6 +77,6 @@ The `subset()` function had to be used to plot each `both_sexes_subset' line on 
 
 <img src="Job trends for specific sectors, 1987 - 2021, Canada" alt="Job trends for specific sectors, 1987 - 2021, Canada" width="800"/> 
 
-What is interesting in this graph is that when the data begins in 1987, there are very few people employed in the natural sciences (blue), whereas white-collar management positions(green) are much higher. However, by 2021, job growth in the sciences has overtaken that of regular office-based management positions. 
+What is interesting in this graph is that when the data begins in 1987, there are very few people employed in the natural sciences (blue), whereas white-collar management positions(green) are much higher. However, by 2021, job growth in the sciences has overtaken that of regular office-based management positions. This indicates the growing tech and scientific influence of progress, and in the future years is likely to grow even more. Perhaps this information should be used to inform highschoolers and other youth who would benefit greatly from learning of job trends to secure a carreer in a field which is both growing interesting to them.
 
 
