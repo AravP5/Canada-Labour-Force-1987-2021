@@ -30,3 +30,30 @@ COMMIT;
 SELECT *
 FROM Sandbox.dbo.labour_force_data
 WHERE Labour_force_characteristics = 'Labour Force' -- I could create tables for each province seoarately, but it is probably easier if I do that in RStudio
+
+SELECT *
+FROM [Labour Force Data]
+WHERE GEO = 'Canada'
+AND REF_DATE = 2021
+AND Labour_force_characteristics = 'Labour force'
+AND Sex = 'Both sexes' 
+
+SELECT VECTOR, VALUE * 100 / 20385.30078125 as percentageoflabour  -- Testing the creation of a new table to join to the existing table for 2021 occupational data
+FROM [Labour Force Data]
+WHERE GEO = 'Canada'
+AND REF_DATE = 2021
+AND Labour_force_characteristics = 'Labour force'
+AND Sex = 'Both sexes' 
+
+SELECT *
+FROM (SELECT * FROM [Labour Force Data]) as t1
+INNER JOIN (SELECT VECTOR, VALUE * 100 / 20385 as percentageoflabour FROM [Labour Force Data]
+WHERE GEO = 'Canada'
+AND REF_DATE = 2021
+AND Labour_force_characteristics = 'Labour force'
+AND Sex = 'Both sexes') as t2
+ON t1.VECTOR = t2.VECTOR
+WHERE GEO = 'Canada'
+AND REF_DATE = 2021
+AND Labour_force_characteristics = 'Labour force'
+AND Sex = 'Both sexes' 
