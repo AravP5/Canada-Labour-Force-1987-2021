@@ -79,4 +79,6 @@ The `subset()` function had to be used to plot each `both_sexes_subset' line on 
 
 What is interesting in this graph is that when the data begins in 1987, there are very few people employed in the natural sciences (blue), whereas white-collar management positions(green) are much higher. However, by 2021, job growth in the sciences has overtaken that of regular office-based management positions. This indicates the growing tech and scientific influence of progress, and in the future years is likely to grow even more. Perhaps this information should be used to inform highschoolers and other youth who would benefit greatly from learning of job trends to secure a carreer in a field which is both growing interesting to them.
 
+### Highest Distribution of Occupational Sectors in all of Canada in 2021
+<img src="2021 Canadian Workforce Distribution 2" alt="2021 Canadian Workforce Distribution 2" width="800"/> 
 
